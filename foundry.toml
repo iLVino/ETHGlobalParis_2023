@@ -8,3 +8,11 @@ optimizer_runs = 200
 verbosity = 3
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
+
+[rpc_endpoints]
+goerli = "https://rpc.ankr.com/eth_goerli"
+lineaT = "https://rpc.goerli.linea.build"
+
+[etherscan]
+linea = { key = "${LINEA_ETHERSCAN_KEY}" }
+goerli = { key = "${GOERLI_API_KEY}" }
