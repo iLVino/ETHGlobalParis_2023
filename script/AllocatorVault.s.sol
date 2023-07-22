@@ -3,11 +3,17 @@
 pragma solidity ^0.8.16;
 
 import "forge-std/Script.sol";
+import {AllocatorVault} from "../src/AllocatorVault.sol";
 
 contract AllocatorVaultScript is Script {
-    function setUp() public {}
-
+    // Runs the script;
     function run() public {
-        vm.broadcast();
+        // Get the private key from the .env
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
+       
+       new AllocatorVault;
+
+        vm.stopBroadcast();
     }
 }

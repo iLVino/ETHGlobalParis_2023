@@ -1,2 +1,20 @@
 Part of this code was inspired by https://github.com/makerdao/rwa-toolkit/blob/master/src/urns/RwaUrn.sol mainly authored by livnev and https://github.com/dapphub/ds-roles/blob/master/src/roles.sol authored by DappHub.
 Since it should belong to the MakerDAO community the Copyright from our additions has been transferred to Dai Foundation.
+
+
+AllocatorRoles 0x540806dd407c13a9b2d5d9E1a178983446dc64ce
+AllocatorRegistry 0x15cf3e71ac5E449CCd777Edd25b0301137Ea04C0
+AllocatorConduitDust 0xb0F8ed4414e56744B166b03Fa009d2dFfff15C98
+
+
+forge create AllocatorConduitDust --private-key 6b5525fc5d4a5e986bebaffd0d906238ed8773fd7f5d8eef61dd77804a90b944 --rpc-url https://endpoints.omniatech.io/v1/op/goerli/public --constructor-args '0x540806dd407c13a9b2d5d9E1a178983446dc64ce' '0x656479BbEd71e37873044467E2Ce4A6fA1bc3dF6'
+
+forge script AllocCondDust.s.sol:AllocatorConduitDust1 --broadcast --verify -vvvv --rpc-url goerli
+
+forge script WhiteROCK.s.sol:WhiteRock --broadcast --verify -vvvv --rpc-url goerli
+
+forge script AllocatorVault.s.sol:AllocatorVaultScript --broadcast --verify -vvvv --rpc-url goerli
+
+forge script AllocatorRegistry.s.sol:AllocatorRegistrysScript --broadcast --verify -vvvv --rpc-url goerli
+
+allocator registry - rely on AllocatorConduitDust 0xb0F8ed4414e56744B166b03Fa009d2dFfff15C98

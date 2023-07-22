@@ -17,6 +17,9 @@
 pragma solidity ^0.8.16;
 
 import "src/interfaces/IAllocatorConduit.sol";
+import "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol";
+import "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
+import "@uniswap/v3-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 
 interface RolesLike {
     function canCall(bytes32, address, address, bytes4) external view returns (bool);
@@ -114,4 +117,24 @@ contract AllocatorConduitDust is IAllocatorConduit {
         TokenLike(asset).transferFrom(manager, buffer, amount);
         emit Withdraw(ilk, asset, buffer, amount);
     }
+
+    /// @inheritdoc IAllocatorConduit
+    function deposit(bytes32 ilk, address asset, uint256 amount) external ilkAuth(ilk) {
+        require(assets[asset].enabled, "SparkConduit/asset-disabled");
+        require(assets[asset].positions[ilk].withdrawals == 0, "SparkConduit/no-deposit-with-pending-withdrawals");
+        require(amount <= maxDeposit(ilk, asset), "SparkConduit/max-deposit-exceeded");
+        address source = RegistryLike(registry).buffers(ilk);
+        require(IERC20(asset).transferFrom(source, address(this), amount),  "SparkConduit/transfer-failed");
+        
+        pool.supply(asset, amount, address(this), 0);
+
+        // Convert asset amount to shares
+        uint256 shares = amount.rayDiv(pool.getReserveData(asset).liquidityIndex);
+
+        assets[asset].positions[ilk].deposits += shares;
+        assets[asset].totalDeposits += shares;
+
+        emit Deposit(ilk, asset, source, amount);
+    }
+
 }
