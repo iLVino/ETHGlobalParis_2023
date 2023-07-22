@@ -10,9 +10,10 @@ verbosity = 3
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
 
 [rpc_endpoints]
-goerli = "https://rpc.ankr.com/eth_goerli"
-lineaT = "https://rpc.goerli.linea.build"
+goerli = "https://goerli.infura.io/v3/de1869554500480391d372841dd9566a"
+linea = "https://rpc.goerli.linea.build"
+optimism = "https://endpoints.omniatech.io/v1/op/goerli/public"
 
 [etherscan]
-linea = { key = "${LINEA_ETHERSCAN_KEY}" }
 goerli = { key = "${GOERLI_API_KEY}" }
+linea = { key = "${ LINEA_ETHERSCAN_KEY }", url = "https://goerli.lineascan.build/" }

@@ -1,0 +1,13 @@
+ds-test/=lib/dss-test/lib/forge-std/lib/ds-test/src/
+dss-interfaces/=lib/dss-test/lib/dss-interfaces/src/
+dss-test/=lib/dss-test/src/
+erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/
+forge-std/=lib/dss-test/lib/forge-std/src/
+openzeppelin-contracts/=lib/openzeppelin-contracts/
+lib/dss-test:ds-test/=lib/dss-test/lib/forge-std/lib/ds-test/src/
+lib/dss-test:dss-interfaces/=lib/dss-test/lib/dss-interfaces/src/
+lib/dss-test:forge-std/=lib/dss-test/lib/forge-std/src/
+lib/openzeppelin-contracts:ds-test/=lib/openzeppelin-contracts/lib/forge-std/lib/ds-test/src/
+lib/openzeppelin-contracts:erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/
+lib/openzeppelin-contracts:forge-std/=lib/openzeppelin-contracts/lib/forge-std/src/
+lib/openzeppelin-contracts:openzeppelin/=lib/openzeppelin-contracts/contracts/

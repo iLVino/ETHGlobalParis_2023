@@ -35,7 +35,7 @@ interface TokenLike {
     function transferFrom(address, address, uint256) external;
 }
 
-contract AllocatorConduitExample is IAllocatorConduit {
+contract AllocatorConduitDust is IAllocatorConduit {
     // --- storage variables ---
 
     mapping(address => uint256) public wards;

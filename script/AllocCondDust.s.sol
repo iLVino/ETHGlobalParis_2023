@@ -3,17 +3,16 @@
 pragma solidity ^0.8.16;
 
 import "forge-std/Script.sol";
-import {WhiteROCK} from "../src/WhiteROCK.sol"; 
+import {AllocatorConduitDust} from "../src/AllocatorConduitDust.sol";
 
-contract WhiteRock is Script {
-     // Runs the script;
+contract AllocatorConduitDust1 is Script {
+    // Runs the script;
     function run() public {
         // Get the private key from the .env
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
-
-        // Make a new token
-        new WhiteROCK(1000000000000000000000);
+       
+       new AllocatorConduitDust;
 
         vm.stopBroadcast();
     }
